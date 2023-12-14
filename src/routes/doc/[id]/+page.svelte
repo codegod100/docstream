@@ -1,21 +1,10 @@
 <script>
   import Blip from "$lib/Blip.svelte";
+  import { stringToColor } from "$lib/common.js";
   export let data;
   const author = data.author;
-  let blippy = [data.json];
-  function stringToColor(str) {
-    let hash = 5381;
-    for (let i = 0; i < str.length; i++) {
-      hash = (hash << 5) + hash + str.charCodeAt(i); /* hash * 33 + c */
-      // console.log("hash", hash);
-    }
-    let golden_ratio = 0.618033988749895;
-    let hue = Math.abs(((hash * golden_ratio) % 1) * 360);
-    // console.log("hue", hue);
-    return `hsl(${hue}, 50%,  70%)`;
-  }
+  let blips = [data.json];
 
-  $: blips = blippy;
   $: authors = new Set([author]);
   $: locked = false;
   console.log("LOADING PAGE");
@@ -46,21 +35,7 @@
   {author}
   {locked}
   {slug}
-  {stringToColor}
-  updateAuthors={(author) => {
-    authors.add(author);
-    authors = authors;
-  }}
-  callback={async (blip) => {
-    let endpoint = `http://localhost:5000/edit/${blip.id}`;
-    let blipData = { content: blip.content };
-    await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(blipData),
-    });
-    io.emit("content", "ok");
-  }}
+  {io}
+  bind:authors
+  callback={async (blip) => {}}
 />
