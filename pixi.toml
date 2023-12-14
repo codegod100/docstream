@@ -1,0 +1,19 @@
+[project]
+name = "docstream"
+version = "0.1.0"
+description = "Add a short description here"
+authors = ["V <nandithebull@outlook.com>"]
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[tasks]
+
+[dependencies]
+sqlalchemy = "2.0.23.*"
+flask = "3.0.0.*"
+flask-cors = "4.0.0.*"
+
+[pypi-dependencies]
+flask-socketio = "*"
+
+
