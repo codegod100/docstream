@@ -21,7 +21,9 @@
   });
 </script>
 
-<div>Current Author: {author}</div>
+<div style="background-color: {stringToColor(author)}">
+  Current Author: {author}
+</div>
 <div>
   Authors:
   {#each authors as author}

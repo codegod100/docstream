@@ -15,36 +15,10 @@
   let count = 0;
 
   let next = counter + 1;
-  async function addBlip(i) {
-    let blip = blips[i];
-    let endpoint = `http://localhost:5000/add/${blip.id}`;
-    let blipData = { content: "edit me", author };
-    let resp = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(blipData),
-    });
-    let id = await resp.json();
-    console.log("created id: ", id);
-    blips[i].blips = [
-      {
-        id,
-        count,
-        blips: [],
-        content: "<div>edit me</div>",
-        author,
-        color: stringToColor(author),
-      },
-      ...blips[i].blips,
-    ];
-    count++;
-  }
+
   for (const blip of blips) {
     if (authors) {
       authors = authors.add(blip.author);
-      console.log("AUTH", authors);
     }
   }
 </script>
@@ -53,7 +27,7 @@
   {#if blip.author == author}
     <Mine {blip} {counter} {io} />
   {:else}
-    <Theirs {blip} {counter} />
+    <Theirs {counter} bind:blip {author} />
   {/if}
 
   {#if blip.blips}
