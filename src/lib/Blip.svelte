@@ -2,17 +2,10 @@
   export let blips;
   export let counter;
   export let author;
-  export let callback;
-  export let updateAuthors;
-  export let stringToColor;
-  export let locked;
   export let authors;
   export let io;
   import Mine from "$lib/Mine.svelte";
   import Theirs from "$lib/Theirs.svelte";
-  console.log("AUTHORS", authors);
-  let mounted = false;
-  let count = 0;
 
   let next = counter + 1;
 

@@ -1,19 +1,14 @@
-import ioClient from 'socket.io-client';
+
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch, params, url }) {
-    let endpoint = `http://localhost:5000/doc/${params.id}`
+    let slug = params.slug
+    let endpoint = `http://localhost:5000/doc/${slug}`
     let author = url.searchParams.get('author') || generateUsername()
     let data = await fetch(`${endpoint}?author=${author}`)
     let json = await data.json()
-    const io = ioClient(`http://localhost:5000`);
-    io.on('connect', () => console.log("we made it"))
-    console.log(json)
+
     return {
-        json, io, id: params.id, author, renew: async () => {
-            let data = await fetch(`${endpoint}?author=${author}`)
-            let json = await data.json()
-            return json
-        }
+        json, slug, author
     }
 }
 
