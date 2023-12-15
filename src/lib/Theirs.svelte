@@ -42,6 +42,7 @@
 
 <div
   role="button"
+  tabindex="0"
   data-author={blip.author}
   data-id={blip.id}
   style="background-color: {color}; margin-left: {margin}px"

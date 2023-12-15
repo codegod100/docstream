@@ -6,22 +6,38 @@
   let color = stringToColor(blip.author);
   let margin = counter * 5;
   import { onMount, afterUpdate, beforeUpdate } from "svelte";
-  beforeUpdate(() => {
-    let element = document.getElementById(blip.id);
-    if (element) {
-      element.innerHTML = "";
-      element.innerHTML = blip.content;
-    }
-  });
+  // beforeUpdate(() => {
+  //   let element = document.getElementById(blip.id);
+  //   if (element) {
+  //     element.innerHTML = "";
+  //     const fixed = fixBrokenHTML(blip.content);
+  //     console.log("fixed", fixed);
+  //     element.innerHTML = fixed;
+  //   }
+  // });
   afterUpdate(() => {
     console.log("blip content", blip.content);
     if (blip.focus) {
       document.getElementById(blip.id)?.focus();
     }
+
+    let element = document.getElementById(blip.id);
+    if (element) {
+      element.innerHTML = "";
+      const fixed = fixBrokenHTML(blip.content);
+      console.log("fixed", fixed);
+      element.innerHTML = fixed;
+    }
   });
+
+  function fixBrokenHTML(brokenHTML) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(brokenHTML, "text/html");
+    return doc.documentElement.innerHTML;
+  }
 </script>
 
-<div class="grid grid-cols-10 grid-flow-row" style="padding-left: {margin}px">
+<div class="grid grid-cols-[50px_auto]" style="padding-left: {margin}px">
   <button
     class="bg-red-500 btn btn-blue"
     on:click={async () => {
@@ -36,10 +52,9 @@
     id={blip.id}
     role="textbox"
     tabindex="0"
-    class="col-span-9"
     data-author={blip.author}
     data-id={blip.id}
-    style="background-color: {color}; "
+    style="background-color: {color}; padding-left: 5px"
     contenteditable="true"
     on:blur={async (event) => {
       let endpoint = `http://localhost:5000/edit/${blip.id}`;
@@ -60,6 +75,6 @@
       }
     }}
   >
-    {blip.content}
+    {@html blip.content}
   </div>
 </div>
