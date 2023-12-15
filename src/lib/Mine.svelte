@@ -37,24 +37,15 @@
   }
 </script>
 
-<div class="grid grid-cols-[50px_auto]" style="padding-left: {margin}px">
-  <button
-    class="bg-red-500 btn btn-blue"
-    on:click={async () => {
-      let endpoint = `http://localhost:5000/remove/${blip.id}`;
-      await fetch(endpoint, {
-        method: "POST",
-      });
-      io.emit("content", "ok");
-    }}>[ X ]</button
-  >
+<div class="flex" style="padding-left: {margin}px">
   <div
+    class="grow"
     id={blip.id}
     role="textbox"
     tabindex="0"
     data-author={blip.author}
     data-id={blip.id}
-    style="background-color: {color}; padding-left: 5px"
+    style="background-color: {color};"
     contenteditable="true"
     on:blur={async (event) => {
       let endpoint = `http://localhost:5000/edit/${blip.id}`;
@@ -77,4 +68,14 @@
   >
     {@html blip.content}
   </div>
+  <button
+    class="bg-red-500 btn btn-blue w-50px"
+    on:click={async () => {
+      let endpoint = `http://localhost:5000/remove/${blip.id}`;
+      await fetch(endpoint, {
+        method: "POST",
+      });
+      io.emit("content", "ok");
+    }}>[ X ]</button
+  >
 </div>
