@@ -259,6 +259,26 @@ package:
     md5: null
     sha256: e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761
 - platform: linux-64
+  name: icu
+  version: '73.2'
+  category: main
+  manager: conda
+  dependencies:
+  - libgcc-ng >=12
+  - libstdcxx-ng >=12
+  url: https://conda.anaconda.org/conda-forge/linux-64/icu-73.2-h59595ed_0.conda
+  hash:
+    md5: cc47e1facc155f91abd89b11e48e72ff
+    sha256: e12fd90ef6601da2875ebc432452590bc82a893041473bc1c13ef29001a73ea8
+  build: h59595ed_0
+  arch: x86_64
+  subdir: linux-64
+  build_number: 0
+  license: MIT
+  license_family: MIT
+  size: 12089150
+  timestamp: 1692900650789
+- platform: linux-64
   name: importlib-metadata
   version: 7.0.0
   category: main
@@ -501,6 +521,25 @@ package:
   size: 33601
   timestamp: 1680112270483
 - platform: linux-64
+  name: libuv
+  version: 1.46.0
+  category: main
+  manager: conda
+  dependencies:
+  - libgcc-ng >=12
+  url: https://conda.anaconda.org/conda-forge/linux-64/libuv-1.46.0-hd590300_0.conda
+  hash:
+    md5: d23c76f7e6dcd6243d1b6ef5e62d17d2
+    sha256: 4bc4c946e9a532c066442714eeeeb1ffbd03cd89789c4047293f5e782b5fedd7
+  build: hd590300_0
+  arch: x86_64
+  subdir: linux-64
+  build_number: 0
+  license: MIT
+  license_family: MIT
+  size: 893348
+  timestamp: 1693539405436
+- platform: linux-64
   name: libzlib
   version: 1.2.13
   category: main
@@ -564,6 +603,32 @@ package:
   license: X11 AND BSD-3-Clause
   size: 884434
   timestamp: 1698751260967
+- platform: linux-64
+  name: nodejs
+  version: 20.9.0
+  category: main
+  manager: conda
+  dependencies:
+  - __glibc >=2.17,<3.0.a0
+  - icu >=73.2,<74.0a0
+  - libgcc-ng >=12
+  - libstdcxx-ng >=12
+  - libuv >=1.46.0,<1.47.0a0
+  - libzlib >=1.2.13,<1.3.0a0
+  - openssl >=3.1.4,<4.0a0
+  - zlib
+  url: https://conda.anaconda.org/conda-forge/linux-64/nodejs-20.9.0-hb753e55_0.conda
+  hash:
+    md5: ddfcb003b0a6804fabe7dfbf1be16651
+    sha256: 4d35f8151f83bc561e4bcb41b46dcf77ec708c88eb333d1376f37371288f46ad
+  build: hb753e55_0
+  arch: x86_64
+  subdir: linux-64
+  build_number: 0
+  license: MIT
+  license_family: MIT
+  size: 17141416
+  timestamp: 1700390394425
 - platform: linux-64
   name: openssl
   version: 3.2.0
@@ -908,3 +973,23 @@ package:
   timestamp: 1695255262261
   purls:
   - pkg:pypi/zipp
+- platform: linux-64
+  name: zlib
+  version: 1.2.13
+  category: main
+  manager: conda
+  dependencies:
+  - libgcc-ng >=12
+  - libzlib 1.2.13 hd590300_5
+  url: https://conda.anaconda.org/conda-forge/linux-64/zlib-1.2.13-hd590300_5.conda
+  hash:
+    md5: 68c34ec6149623be41a1933ab996a209
+    sha256: 9887a04d7e7cb14bd2b52fa01858f05a6d7f002c890f618d9fcd864adbfecb1b
+  build: hd590300_5
+  arch: x86_64
+  subdir: linux-64
+  build_number: 5
+  license: Zlib
+  license_family: Other
+  size: 92825
+  timestamp: 1686575231103
