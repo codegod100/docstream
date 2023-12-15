@@ -15,7 +15,7 @@
       }
     }
     let endpoint = `http://localhost:5000/add/${blip.id}`;
-    let content = "edit me";
+    let content = "";
     let blipData = { content, author };
     let resp = await fetch(endpoint, {
       method: "POST",
@@ -28,13 +28,14 @@
     console.log("created id: ", id);
 
     blip.blips = [
+      ...blip.blips,
       {
         id,
         blips: [],
         content,
         author,
+        focus: true,
       },
-      ...blip.blips,
     ];
   }
 </script>

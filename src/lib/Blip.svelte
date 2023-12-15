@@ -9,11 +9,8 @@
   import { onMount, afterUpdate } from "svelte";
 
   let next = counter + 1;
-  console.log("checking blips");
 
   afterUpdate(() => {
-    console.log("yehaww mounting Blip");
-    console.log(blips);
     for (const blip of blips) {
       if (authors) {
         authors = authors.add(blip.author);

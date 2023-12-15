@@ -9,12 +9,10 @@
   let authors = new Set([author]);
 
   io.on("content", async () => {
-    console.log("grabbing data");
     let slug = data.slug;
     let endpoint = `http://localhost:5000/doc/${slug}`;
     let resp = await fetch(`${endpoint}?author=${author}`);
     let json = await resp.json();
-    console.log(json);
     blips = [json];
   });
 </script>
@@ -25,7 +23,7 @@
 <div>
   Authors:
   {#each authors as a}
-    <span style="background-color: {stringToColor(a)}">[ {a} ]</span>
+    <span style="background-color: {stringToColor(a)}">[&nbsp;{a}&nbsp;]</span>
   {/each}
 </div>
 
