@@ -8,7 +8,16 @@
 </script>
 
 <div class="grid grid-cols-10 grid-flow-row" style="margin-left: {margin}px">
-  <button class="bg-red-500 btn btn-blue">[ X ]</button>
+  <button
+    class="bg-red-500 btn btn-blue"
+    on:click={async () => {
+      let endpoint = `http://localhost:5000/remove/${blip.id}`;
+      await fetch(endpoint, {
+        method: "POST",
+      });
+      io.emit("content", "ok");
+    }}>[ X ]</button
+  >
   <div
     class="col-span-9"
     data-author={blip.author}

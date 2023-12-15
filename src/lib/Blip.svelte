@@ -6,14 +6,20 @@
   export let io;
   import Mine from "$lib/Mine.svelte";
   import Theirs from "$lib/Theirs.svelte";
+  import { onMount, afterUpdate } from "svelte";
 
   let next = counter + 1;
+  console.log("checking blips");
 
-  for (const blip of blips) {
-    if (authors) {
-      authors = authors.add(blip.author);
+  afterUpdate(() => {
+    console.log("yehaww mounting Blip");
+    console.log(blips);
+    for (const blip of blips) {
+      if (authors) {
+        authors = authors.add(blip.author);
+      }
     }
-  }
+  });
 </script>
 
 {#each blips as blip, i}

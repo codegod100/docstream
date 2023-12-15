@@ -14,6 +14,7 @@
     let endpoint = `http://localhost:5000/doc/${slug}`;
     let resp = await fetch(`${endpoint}?author=${author}`);
     let json = await resp.json();
+    console.log(json);
     blips = [json];
   });
 </script>

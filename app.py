@@ -17,25 +17,6 @@ engine = create_engine("sqlite:///blips.sql", echo=True)
 Base.metadata.create_all(engine)
 
 
-@app.route("/create")
-def hello_world():
-    with Session(engine) as session:
-        blip = Blip(author="vera", content="edit me", slug="first")
-        blip2 = Blip(author="test", content="wee", blips=[blip])
-        session.add_all([blip, blip2])
-        session.commit()
-    return "<p>Hello, World!</p>"
-
-
-@app.route("/select")
-def sel():
-    with Session(engine) as session:
-        stmt = select(Blip).where(Blip.author == "test")
-        for blip in session.scalars(stmt):
-            print(blip.blips)
-    return "OK"
-
-
 def child_blips(blip):
     data = {
         "id": blip.id,
@@ -74,6 +55,16 @@ def add(id):
         session.commit()
         new_blip_id = new_blip.id
     return str(new_blip_id)
+
+
+@app.route("/remove/<id>", methods=["POST"])
+def remove(id):
+    with Session(engine) as session:
+        stmt = select(Blip).where(Blip.id == id)
+        blip = session.scalars(stmt).first()
+        session.delete(blip)
+        session.commit()
+    return "OK"
 
 
 @app.route("/edit/<id>", methods=["POST"])
