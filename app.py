@@ -1,7 +1,9 @@
+import json
+import random
 from sqlalchemy import create_engine, select
 from model import Blip, Base
 from sqlalchemy.orm import Session, joinedload
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template, send_from_directory
 from flask_cors import CORS
 from flask_socketio import SocketIO, emit
 
@@ -28,6 +30,26 @@ def child_blips(blip):
     else:
         data["blips"] = []
     return data
+
+
+@app.route("/d/<slug>")
+def index(slug):
+    author = request.args.get("author")
+    blips = []
+    with Session(engine) as session:
+        stmt = select(Blip).where(Blip.slug == slug)
+        blip = session.scalars(stmt).first()
+        if not blip:
+            blip = Blip(author=author, content="edit me", slug=slug)
+            session.add_all([blip])
+            session.commit()
+        blips = json.dumps([child_blips(blip)])
+    return render_template("index.html", author=author, blips=blips, slug=slug)
+
+
+@app.route("/assets/<path:path>")
+def send_js(path):
+    return send_from_directory("templates/assets", path)
 
 
 @app.route("/doc/<slug>")
@@ -86,3 +108,39 @@ def handle_content(content):
 
 if __name__ == "__main__":
     socketio.run(app, allow_unsafe_werkzeug=True)
+
+
+def generate_username():
+    words = [
+        "apple",
+        "banana",
+        "cherry",
+        "date",
+        "elderberry",
+        "fig",
+        "grape",
+        "honeydew",
+        "iceberg",
+        "jackfruit",
+        "kiwi",
+        "lemon",
+        "mango",
+        "nectarine",
+        "orange",
+        "pineapple",
+        "quince",
+        "raspberry",
+        "strawberry",
+        "tangerine",
+        "ugli",
+        "victoria",
+        "watermelon",
+        "xigua",
+        "yellow",
+        "zucchini",
+    ]
+    username = (
+        words[random.randint(0, len(words) - 1)]
+        + words[random.randint(0, len(words) - 1)]
+    )
+    return username

@@ -1,0 +1,17 @@
+<div id="data" data-author="{{author}}" data-blips='{{blips}}' data-slug="{{slug}}"></div>
+<div id="page"></div>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script type="module">
+    import Page from "./svelte/Page.svelte"
+    let data = document.getElementById("data")
+    new Page({
+        target: document.getElementById("page"), props: {
+            author: data.dataset.author,
+            blips: JSON.parse(data.dataset.blips),
+            slug: data.dataset.slug
+        }
+    })
+
+</script>

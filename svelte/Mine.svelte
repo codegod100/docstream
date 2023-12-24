@@ -1,5 +1,5 @@
 <script>
-  import { stringToColor } from "$lib/common.js";
+  import { stringToColor } from "./common.js";
   export let counter;
   export let io;
   export let blip;
@@ -48,7 +48,7 @@
     style="background-color: {color};"
     contenteditable="true"
     on:blur={async (event) => {
-      let endpoint = `http://localhost:5000/edit/${blip.id}`;
+      let endpoint = `/edit/${blip.id}`;
       let data = { content: event.target.innerHTML };
       // event.target.innerHTML = "";
       await fetch(endpoint, {
@@ -71,7 +71,7 @@
   <button
     class="bg-red-500 btn btn-blue w-50px"
     on:click={async () => {
-      let endpoint = `http://localhost:5000/remove/${blip.id}`;
+      let endpoint = `/remove/${blip.id}`;
       await fetch(endpoint, {
         method: "POST",
       });

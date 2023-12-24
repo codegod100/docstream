@@ -4,10 +4,12 @@
   export let author;
   export let authors;
   export let io;
-  import Mine from "$lib/Mine.svelte";
-  import Theirs from "$lib/Theirs.svelte";
+  import Mine from "./Mine.svelte";
+  import Theirs from "./Theirs.svelte";
   import { onMount, afterUpdate } from "svelte";
-
+  import { convertKeys } from "./common";
+  console.log(author, blips);
+  blips = convertKeys(blips);
   let next = counter + 1;
 
   afterUpdate(() => {

@@ -14,37 +14,3 @@ export async function load({ fetch, params, url }) {
 
 
 
-function generateUsername() {
-    const words = [
-        "apple",
-        "banana",
-        "cherry",
-        "date",
-        "elderberry",
-        "fig",
-        "grape",
-        "honeydew",
-        "iceberg",
-        "jackfruit",
-        "kiwi",
-        "lemon",
-        "mango",
-        "nectarine",
-        "orange",
-        "pineapple",
-        "quince",
-        "raspberry",
-        "strawberry",
-        "tangerine",
-        "ugli",
-        "victoria",
-        "watermelon",
-        "xigua",
-        "yellow",
-        "zucchini",
-    ];
-    let username =
-        words[Math.floor(Math.random() * words.length)] +
-        words[Math.floor(Math.random() * words.length)];
-    return username;
-}

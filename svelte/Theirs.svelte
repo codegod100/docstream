@@ -1,5 +1,5 @@
 <script>
-  import { stringToColor } from "$lib/common.js";
+  import { stringToColor } from "./common.js";
   export let blip;
   export let counter;
   export let author;
@@ -14,7 +14,7 @@
         return;
       }
     }
-    let endpoint = `http://localhost:5000/add/${blip.id}`;
+    let endpoint = `/add/${blip.id}`;
     let content = "";
     let blipData = { content, author };
     let resp = await fetch(endpoint, {
