@@ -1,3 +1,5 @@
 /node_modules
 /.pixi
 /__pycache__
+/.svelte-kit
+/src

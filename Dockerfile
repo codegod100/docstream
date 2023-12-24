@@ -1,6 +1,6 @@
 FROM debian:bookworm-slim
 RUN apt update && apt install -y  curl
-ARG PIXI=/root/.pixi/bin/pixi
+ENV PIXI=/root/.pixi/bin/pixi
 WORKDIR /workspace/docstream
 RUN curl -fsSL https://pixi.sh/install.sh | bash
 COPY . .
