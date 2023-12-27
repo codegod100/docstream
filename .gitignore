@@ -11,5 +11,4 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 # pixi environments
 .pixi
-
-*.sql
+/data

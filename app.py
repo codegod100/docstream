@@ -15,7 +15,7 @@ app.config["SECRET_KEY"] = "secret!"
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 
-engine = create_engine("sqlite:///blips.sql", echo=True)
+engine = create_engine("sqlite:///data/blips.sql", echo=True)
 Base.metadata.create_all(engine)
 
 
