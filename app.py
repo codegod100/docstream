@@ -34,7 +34,7 @@ def child_blips(blip):
 
 @app.route("/d/<slug>")
 def index(slug):
-    author = request.args.get("author")
+    author = request.args.get("author") or request.remote_addr
     blips = []
     with Session(engine) as session:
         stmt = select(Blip).where(Blip.slug == slug)
