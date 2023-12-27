@@ -2,7 +2,7 @@
   import Blip from "./Blip.svelte";
   import { stringToColor } from "./common.js";
   import ioClient from "socket.io-client";
-  const io = ioClient(`http://localhost:5000`);
+  const io = ioClient(`/`);
   export let author;
   export let blips;
   export let slug;
@@ -13,7 +13,7 @@
   let authors = new Set([author]);
 
   io.on("content", async () => {
-    let endpoint = `http://localhost:5000/doc/${slug}`;
+    let endpoint = `/doc/${slug}`;
     let resp = await fetch(`${endpoint}?author=${author}`);
     let json = await resp.json();
     blips = [json];
