@@ -38,12 +38,15 @@ def index(slug):
     blips = []
     with Session(engine) as session:
         stmt = select(Blip).where(Blip.slug == slug)
-        blip = session.scalars(stmt).first()
-        if not blip:
+        blips = session.scalars(stmt).all()
+        if len(blips) == 0:
             blip = Blip(author=author, content="edit me", slug=slug)
             session.add_all([blip])
             session.commit()
-        blips = json.dumps([child_blips(blip)])
+        new_blips = []
+        for blip in blips:
+            new_blips.append(child_blips(blip))
+        blips = json.dumps(new_blips)
     return render_template("index.html", author=author, blips=blips, slug=slug)
 
 
@@ -57,15 +60,31 @@ def doc(slug):
     author = request.args.get("author")
     with Session(engine) as session:
         stmt = select(Blip).where(Blip.slug == slug)
-        blip = session.scalars(stmt).first()
-        if not blip:
+        blips = session.scalars(stmt).all()
+        if len(blips) == 0:
             blip = Blip(author=author, content="edit me", slug=slug)
             session.add_all([blip])
             session.commit()
-        data = child_blips(blip)
+        new_blips = []
+        for blip in blips:
+            new_blips.append(child_blips(blip))
+        data = new_blips
     return jsonify(data)
 
+# create new blip and add set slug to page
+@app.route("/new/<slug>", methods=["POST"])
+def new(slug):
+    print(f"WHAT SLUG {slug}")
+    data = request.get_json()
+    with Session(engine) as session:
+        new_blip = Blip(content=data["content"], author=data["author"], slug=slug)
+        print(f"NEW_BLIP {new_blip}")
+        session.add(new_blip)
+        session.commit()
+        new_blip_id = new_blip.id
+    return str(new_blip_id)
 
+# adds sub blips to a blip
 @app.route("/add/<id>", methods=["POST"])
 def add(id):
     data = request.get_json()
@@ -79,6 +98,7 @@ def add(id):
     return str(new_blip_id)
 
 
+# delete blip by id
 @app.route("/remove/<id>", methods=["POST"])
 def remove(id):
     with Session(engine) as session:

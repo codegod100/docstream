@@ -32,4 +32,4 @@ class Blip(Base):
     )
 
     def __repr__(self) -> str:
-        return f"Blip(id={self.id!r}, content={self.content!r}, author={self.author!r})"
+        return f"Blip(id={self.id!r}, content={self.content!r}, author={self.author!r}, slug={self.slug!r})"

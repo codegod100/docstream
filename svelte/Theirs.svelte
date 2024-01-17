@@ -3,13 +3,18 @@
   export let blip;
   export let counter;
   export let author;
+  console.log(`BLIPPY`,blip)
+  if(Array.isArray(blip)){
+    console.log("WHY ARRAY")
+    
+  }
   let color = stringToColor(blip.author);
   let margin = counter * 5;
 
   async function addBlip() {
     for (const b of blip.blips) {
       if (b.author == author) {
-        // one one blip child per author for now
+        // only one blip child per author for now
         console.log("already have blip member");
         return;
       }

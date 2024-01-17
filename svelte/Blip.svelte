@@ -9,10 +9,12 @@
   import { onMount, afterUpdate } from "svelte";
   import { convertKeys } from "./common";
   console.log(author, blips);
-  blips = convertKeys(blips);
+  console.log("before convert", blips)
+  // blips = convertKeys(blips);
   let next = counter + 1;
 
   afterUpdate(() => {
+    console.log("updated blips", blips);
     for (const blip of blips) {
       if (authors) {
         authors = authors.add(blip.author);

@@ -16,7 +16,7 @@
     let endpoint = `/doc/${slug}`;
     let resp = await fetch(`${endpoint}?author=${author}`);
     let json = await resp.json();
-    blips = [json];
+    blips = json;
   });
   import { onMount } from "svelte";
   console.log("raw log");
@@ -36,3 +36,28 @@
 </div>
 
 <Blip {blips} counter={1} {author} {io} bind:authors />
+<div><button on:click={async () => {
+    let endpoint = `/new/${slug}`;
+    let content = "";
+    let blipData = { content, author };
+    let resp = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(blipData),
+    });
+    let id = await resp.json();
+    console.log("created id: ", id);
+    // io.emit("content", "ok");
+    blips = [
+      ...blips,
+      {
+        id,
+        blips: [],
+        content,
+        author,
+        focus: true,
+      },
+    ];
+}}>[+] Click here to add a new top level blip, or click existing blip to add a child</button> </div>
