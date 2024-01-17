@@ -1,0 +1,22 @@
+{
+  "packages": [
+    "poetry@latest",
+    "nodejs@latest",
+    "python@3.11",
+    "bun@latest",
+    "python311Packages.flask@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      "echo 'Welcome to devbox!' > /dev/null"
+    ],
+    "scripts": {
+      "server": "FLASK_DEBUG=1 poetry run flask run --host 0.0.0.0",
+      "build": "bun run build",
+      "install": "bun install && poetry install --no-root",
+      "test": [
+        "echo \"Error: no test specified\" && exit 1"
+      ]
+    }
+  }
+}
