@@ -4,7 +4,7 @@ FROM jetpackio/devbox:latest
 # Installing your devbox project
 
 WORKDIR /home/devbox
-
+RUN mkdir /home/devbox/data
 USER ${DEVBOX_USER}:${DEVBOX_USER}
 
 COPY --chown=${DEVBOX_USER}:${DEVBOX_USER} . .
