@@ -10,6 +10,7 @@ python = "^3.11"
 sqlalchemy = "^2.0.25"
 flask-cors = "^4.0.0"
 flask-socketio = "^5.3.6"
+emmett = "^2.5.7"
 
 
 [build-system]
