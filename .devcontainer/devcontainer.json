@@ -4,10 +4,7 @@
   "customizations": {
     "vscode": {
       "settings": {},
-      "extensions": [
-        "jetpack-io.devbox"
-      ]
+
     }
-  },
-  "remoteUser": "devbox"
+  }
 }
