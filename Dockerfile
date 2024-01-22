@@ -1,6 +1,6 @@
 FROM cgr.dev/chainguard/wolfi-base
 WORKDIR /app
-RUN apk update && apk add pixi bun posix-libc-utils nodejs poetry
+RUN apk update && apk add pixi bun posix-libc-utils nodejs poetry git
 COPY package.json .
 RUN bun install
 COPY . .
