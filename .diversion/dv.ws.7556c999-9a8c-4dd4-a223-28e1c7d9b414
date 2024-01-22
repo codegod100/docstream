@@ -1,0 +1,12 @@
+{
+  "WorkspaceID": "dv.ws.7556c999-9a8c-4dd4-a223-28e1c7d9b414",
+  "RepoID": "dv.repo.64ce2252-aa7c-44fc-b20b-de151cae2aa9",
+  "Path": "/home/vera/docstream",
+  "AccountID": "Google_110846746763093415748",
+  "BranchID": "dv.branch.1",
+  "BranchName": "main",
+  "CommitID": "dv.commit.1",
+  "Paused": false,
+  "ShouldDownload": false,
+  "RepoName": "docstream"
+}

@@ -15,5 +15,3 @@ vite.config.ts.timestamp-*
 /templates/assets
 /templates/index.html# pixi environments
 .pixi
-.diversion
-.dvignore
