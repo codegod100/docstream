@@ -1,0 +1,104 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "bun@latest": {
+      "last_modified": "2024-01-14T03:55:27Z",
+      "resolved": "github:NixOS/nixpkgs/dd5621df6dcb90122b50da5ec31c411a0de3e538#bun",
+      "source": "devbox-search",
+      "version": "1.0.22",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/sxj1xfwn7153a5jr89d497vpxpx684iw-bun-1.0.22"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/d00byhy46iyl1vyxs59xsn1q499i2xlv-bun-1.0.22"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/3zinj1fjyaghpzl0wd3assqr5wsrc44s-bun-1.0.22"
+        }
+      }
+    },
+    "nodejs@latest": {
+      "last_modified": "2024-01-14T03:55:27Z",
+      "resolved": "github:NixOS/nixpkgs/dd5621df6dcb90122b50da5ec31c411a0de3e538#nodejs_21",
+      "source": "devbox-search",
+      "version": "21.5.0",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/ybpqk26vz7k9grapsgx0sd900s0sp4sa-nodejs-21.5.0"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/brnzb5xxgdx6bbicygz83ybi5inqp09v-nodejs-21.5.0"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/yvgnx3lj8am9mqn30yr09sb4ia7qy3w8-nodejs-21.5.0"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/nxfirpvaycr7wqzwl6wqifpdrqn7is7x-nodejs-21.5.0"
+        }
+      }
+    },
+    "poetry@latest": {
+      "last_modified": "2024-01-14T03:55:27Z",
+      "plugin_version": "0.0.4",
+      "resolved": "github:NixOS/nixpkgs/dd5621df6dcb90122b50da5ec31c411a0de3e538#poetry",
+      "source": "devbox-search",
+      "version": "1.7.1",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/xdp0dyglkkfrny00ij665wg1jgywy0lj-python3.11-poetry-1.7.1"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/7s0vmxw46cm3pa8rhqgjx71h7s9mgbc8-python3.11-poetry-1.7.1"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/vwlkmaxd6cx8w3a7b4lb0iljqwdxbv74-python3.11-poetry-1.7.1"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/1hpicmnsxgqschsdirfhkzwvpm893fmk-python3.11-poetry-1.7.1"
+        }
+      }
+    },
+    "python311Packages.flask@latest": {
+      "last_modified": "2024-01-14T03:55:27Z",
+      "resolved": "github:NixOS/nixpkgs/dd5621df6dcb90122b50da5ec31c411a0de3e538#python311Packages.flask",
+      "source": "devbox-search",
+      "version": "2.3.3",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/3f3rm41ix3n34pjwnrnmahyafahid5kd-python3.11-flask-2.3.3"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/46sgf9k0bd7mgn7idlfhpys1aj5acji2-python3.11-flask-2.3.3"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/gp440kc4cz9xnwbvda58h8bp2wpapxjg-python3.11-flask-2.3.3"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/bh0vjqrpvlsf3sbi53dp5alw114ikbgh-python3.11-flask-2.3.3"
+        }
+      }
+    },
+    "python@3.11": {
+      "last_modified": "2024-01-14T03:55:27Z",
+      "plugin_version": "0.0.3",
+      "resolved": "github:NixOS/nixpkgs/dd5621df6dcb90122b50da5ec31c411a0de3e538#python3",
+      "source": "devbox-search",
+      "version": "3.11.7",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/al81jk4wz596q8if684x6a9mqlv7vc3z-python3-3.11.7"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/1dv5m71dgl6n8dxd7riqjz094vqmyws8-python3-3.11.7"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/six35arbsdi3zw9278xvq3zh647sx6ik-python3-3.11.7"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/asiphbpiy2gmidfm3xbwcikayhs66289-python3-3.11.7"
+        }
+      }
+    }
+  }
+}
