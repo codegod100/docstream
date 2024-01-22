@@ -1,18 +1,10 @@
-FROM jetpackio/devbox:latest
-
-
-# Installing your devbox project
-
-WORKDIR /home/devbox
-RUN mkdir /home/devbox/data
-USER ${DEVBOX_USER}:${DEVBOX_USER}
-
-COPY --chown=${DEVBOX_USER}:${DEVBOX_USER} . .
-
-RUN devbox run install 
-RUN devbox run build
-
-
-RUN devbox shellenv --init-hook >> ~/.profile
-
-CMD devbox run server
+FROM cgr.dev/chainguard/wolfi-base
+WORKDIR /app
+RUN apk update && apk add pixi bun posix-libc-utils nodejs poetry
+COPY package.json .
+RUN bun install
+COPY . .
+RUN npm run build
+RUN poetry install
+RUN mkdir data
+CMD FLASK_DEBUG=1 poetry run flask run --host 0.0.0.0
