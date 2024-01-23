@@ -6,7 +6,4 @@ COPY . .
 RUN bun install
 RUN npm run build
 
-RUN poetry install
-
-RUN mkdir data
-CMD FLASK_DEBUG=1 poetry run flask run --host 0.0.0.0
+CMD ./start.sh

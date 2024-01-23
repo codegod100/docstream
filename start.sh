@@ -1,3 +1,3 @@
 #!/bin/bash
-python app.py&
-npm run dev
+poetry install
+FLASK_DEBUG=1 poetry run flask run --host 0.0.0.0

@@ -12,6 +12,7 @@ vite.config.ts.timestamp-*
 # pixi environments
 .pixi
 /data
+!/data/.keep
 /templates/assets
 /templates/index.html# pixi environments
 .pixi
