@@ -39,10 +39,6 @@ def index(slug):
     with Session(engine) as session:
         stmt = select(Blip).where(Blip.slug == slug)
         blips = session.scalars(stmt).all()
-        if len(blips) == 0:
-            blip = Blip(author=author, content="edit me", slug=slug)
-            session.add_all([blip])
-            session.commit()
         new_blips = []
         for blip in blips:
             new_blips.append(child_blips(blip))
