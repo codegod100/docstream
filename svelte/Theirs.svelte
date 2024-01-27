@@ -1,21 +1,15 @@
 <script>
-  import { stringToColor } from "./common.js";
   export let blip;
   export let counter;
   export let author;
-  console.log(`BLIPPY`,blip)
-  if(Array.isArray(blip)){
-    console.log("WHY ARRAY")
-    
-  }
-  let color = stringToColor(blip.author);
+  export let colorMap;
+
   let margin = counter * 5;
 
   async function addBlip() {
     for (const b of blip.blips) {
       if (b.author == author) {
         // only one blip child per author for now
-        console.log("already have blip member");
         return;
       }
     }
@@ -30,7 +24,6 @@
       body: JSON.stringify(blipData),
     });
     let id = await resp.json();
-    console.log("created id: ", id);
 
     blip.blips = [
       ...blip.blips,
@@ -50,7 +43,7 @@
   tabindex="0"
   data-author={blip.author}
   data-id={blip.id}
-  style="background-color: {color}; margin-left: {margin}px"
+  style="background-color: {colorMap[blip.author]}; margin-left: {margin}px"
   on:click={addBlip}
 >
   {@html blip.content}

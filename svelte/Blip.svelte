@@ -3,18 +3,16 @@
   export let counter;
   export let author;
   export let authors;
+  export let colorMap;
   export let io;
   import Mine from "./Mine.svelte";
   import Theirs from "./Theirs.svelte";
   import { onMount, afterUpdate } from "svelte";
   import { convertKeys } from "./common";
-  console.log(author, blips);
-  console.log("before convert", blips)
   // blips = convertKeys(blips);
   let next = counter + 1;
 
   afterUpdate(() => {
-    console.log("updated blips", blips);
     for (const blip of blips) {
       if (authors) {
         authors = authors.add(blip.author);
@@ -25,12 +23,19 @@
 
 {#each blips as blip, i}
   {#if blip.author == author}
-    <Mine {blip} {counter} {io} />
+    <Mine {blip} {counter} {colorMap} {io} />
   {:else}
-    <Theirs {counter} bind:blip {author} />
+    <Theirs {counter} {colorMap} bind:blip {author} />
   {/if}
 
   {#if blip.blips}
-    <svelte:self blips={blip.blips} counter={next} bind:authors {author} {io} />
+    <svelte:self
+      blips={blip.blips}
+      {colorMap}
+      counter={next}
+      bind:authors
+      {author}
+      {io}
+    />
   {/if}
 {/each}

@@ -1,9 +1,8 @@
 <script>
-  import { stringToColor } from "./common.js";
   export let counter;
   export let io;
   export let blip;
-  let color = stringToColor(blip.author);
+  export let colorMap;
   let margin = counter * 5;
   import { onMount, afterUpdate, beforeUpdate } from "svelte";
   // beforeUpdate(() => {
@@ -11,12 +10,10 @@
   //   if (element) {
   //     element.innerHTML = "";
   //     const fixed = fixBrokenHTML(blip.content);
-  //     console.log("fixed", fixed);
   //     element.innerHTML = fixed;
   //   }
   // });
   afterUpdate(() => {
-    console.log("blip content", blip.content);
     if (blip.focus) {
       document.getElementById(blip.id)?.focus();
     }
@@ -25,7 +22,6 @@
     if (element) {
       element.innerHTML = "";
       const fixed = fixBrokenHTML(blip.content);
-      console.log("fixed", fixed);
       element.innerHTML = fixed;
     }
   });
@@ -45,7 +41,7 @@
     tabindex="0"
     data-author={blip.author}
     data-id={blip.id}
-    style="background-color: {color};"
+    style="background-color: {colorMap[blip.author]};"
     contenteditable="true"
     on:blur={async (event) => {
       let endpoint = `/edit/${blip.id}`;
