@@ -1,5 +1,5 @@
 FROM cgr.dev/chainguard/wolfi-base
-WORKDIR /workspace/docstream
+WORKDIR /workspaces/docstream
 RUN apk update && apk add pixi bun posix-libc-utils nodejs poetry git
 COPY . .
 
