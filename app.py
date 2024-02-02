@@ -31,10 +31,15 @@ def child_blips(blip):
         data["blips"] = []
     return data
 
-
+usermap = {}
 @app.route("/d/<slug>")
 def index(slug):
-    author = request.args.get("author") or request.access_route[0]
+    ip = request.access_route[0]
+    username = usermap.get(ip)
+    if not username:
+        usermap[ip] = generate_username()
+        username = usermap[ip]
+    author = request.args.get("author") or username
     blips = []
     with Session(engine) as session:
         stmt = select(Blip).where(Blip.slug == slug)
