@@ -39,6 +39,7 @@
 </script>
 
 <div
+  title={blip.author}
   role="button"
   tabindex="0"
   data-author={blip.author}
