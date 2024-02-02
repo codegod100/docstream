@@ -5,5 +5,6 @@ COPY . .
 
 RUN bun install
 RUN npm run build
-
+RUN mkdir -p data
+RUN poetry install
 CMD ./start.sh
